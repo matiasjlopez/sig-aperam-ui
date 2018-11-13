@@ -1,16 +1,18 @@
 <div class="example-container">
   <h1>Crear Orden de compra</h1>
-  <mat-form-field>
-    <input matInput placeholder="Input">
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput placeholder="Serie" formControlName="serie">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Ancho" formControlName="ancho">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Espesor" formControlName="espesor">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Peso" formControlName="peso">
+    </mat-form-field>
+    <button (click)="add()">Crear</button>
+  </form>
 </div>
