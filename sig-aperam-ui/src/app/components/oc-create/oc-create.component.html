@@ -13,6 +13,6 @@
     <mat-form-field>
       <input type="number" matInput placeholder="Peso" formControlName="peso">
     </mat-form-field>
-    <button (click)="add()">Crear</button>
+    <button mat-button [disabled]="form.invalid || form.pristine" (click)="add()">Crear</button>
   </form>
 </div>

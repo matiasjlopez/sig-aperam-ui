@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {OcService} from '../../services/oc/oc.service';
 import {OrdenDeCompra} from '../../models/orden-de-compra.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-oc-create',
@@ -12,7 +13,7 @@ import {OrdenDeCompra} from '../../models/orden-de-compra.model';
 export class OcCreateComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private ocService: OcService) { }
+  constructor(private formBuilder: FormBuilder, private ocService: OcService, private router: Router) { }
 
   ngOnInit() {
     this.form = this.createForm();
@@ -28,6 +29,9 @@ export class OcCreateComponent implements OnInit {
   }
 
   add() {
-    this.ocService.addOc(new OrdenDeCompra(this.form.getRawValue())).then(_ => console.log('Ok'));
+    this.ocService.addOc(new OrdenDeCompra(this.form.getRawValue())).then(_ => {
+      this.form.reset();
+      this.router.navigate(['oc', 'calidad']);
+    });
   }
 }

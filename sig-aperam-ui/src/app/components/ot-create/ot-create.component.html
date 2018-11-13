@@ -1,0 +1,35 @@
+<div class="example-container">
+  <h1>Crear Orden de trabajo</h1>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput placeholder="Serie solicitada" formControlName="serieSolicitada">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Espesor solicitado" formControlName="espesorSolicitado">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Ancho solicitado" formControlName="anchoSolicitado">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Largo solicitado" formControlName="largoSolicitado">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Esmerilado solicitado" formControlName="esmerilado">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Cantidad" formControlName="cantidad">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de despacho" formControlName="fechaDespacho">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <select matNativeControl required placeholder="Producto" formControlName="producto">
+        <option value="CHAPA">CHAPA</option>
+        <option value="FLEJE">FLEJE</option>
+      </select>
+    </mat-form-field>
+    <button mat-button [disabled]="form.invalid || form.pristine" (click)="add()">Crear</button>
+  </form>
+</div>
