@@ -1,3 +1,66 @@
-<p>
-  ocqa works!
-</p>
+<div class="col-12 margin-top">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select placeholder="Orden de compra" [(value)]="selectedOrden" (selectionChange)="onOrdenSelected($event.value)">
+              <mat-option *ngFor="let orden of ordenes" [value]="orden">
+                {{orden.id + ' - ' + orden.serie}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6" *ngIf="selectedOrden && bobinas">
+          <mat-form-field>
+            <mat-select placeholder="Bobina" [(value)]="selectedBobina">
+              <mat-option *ngFor="let bobina of bobinas" [value]="bobina">
+                {{bobina.codigo + ' - ' + bobina.serie}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="selectedOrden">
+        <div class="col-6">
+          <mat-card>
+            <mat-card-title>Orden de compra - {{selectedOrden.id}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie" [value]="selectedOrden.serie" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho" [value]="selectedOrden.ancho" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor" [value]="selectedOrden.espesor" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Peso" [value]="selectedOrden.peso" disabled>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-6" *ngIf="selectedBobina">
+          <mat-card>
+            <mat-card-title>Bobina - {{selectedBobina.codigo}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie" [value]="selectedBobina.serie" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho" [value]="selectedBobina.ancho" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor" [value]="selectedBobina.espesor" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Peso" [value]="selectedBobina.peso" disabled>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

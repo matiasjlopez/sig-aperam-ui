@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OcCreateComponent } from './components/oc-create/oc-create.component';
 import {DemoMaterialModule} from './material/material-module';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {DemoMaterialModule} from './material/material-module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
