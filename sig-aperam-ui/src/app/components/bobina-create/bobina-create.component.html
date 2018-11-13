@@ -1,5 +1,5 @@
 <div class="example-container">
-  <h1>Crear Orden de compra</h1>
+  <h1>Crear Bobina</h1>
   <form [formGroup]="form">
     <mat-form-field>
       <input matInput placeholder="Serie" formControlName="serie">
@@ -11,10 +11,17 @@
       <input type="number" matInput placeholder="Espesor" formControlName="espesor">
     </mat-form-field>
     <mat-form-field>
-      <input type="number" matInput placeholder="Peso" formControlName="peso">
+      <input type="number" matInput placeholder="Peso" formControlName="pesoTotal">
     </mat-form-field>
     <mat-form-field>
       <input type="number" matInput placeholder="Largo" formControlName="largo">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Orden de compra" formControlName="ordenDeCompraId">
+        <mat-option *ngFor="let oc of ocs" [value]="oc.id">
+          {{oc.id}} - {{oc.serie}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <button mat-button [disabled]="form.invalid || form.pristine" (click)="add()">Crear</button>
   </form>

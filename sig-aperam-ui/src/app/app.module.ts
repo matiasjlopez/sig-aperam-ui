@@ -12,6 +12,7 @@ import { OcCreateComponent } from './components/oc-create/oc-create.component';
 import {DemoMaterialModule} from './material/material-module';
 import { OtCreateComponent } from './components/ot-create/ot-create.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { BobinaCreateComponent } from './components/bobina-create/bobina-create.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     OCQAComponent,
     OTQAComponent,
     OcCreateComponent,
-    OtCreateComponent
+    OtCreateComponent,
+    BobinaCreateComponent
   ],
   imports: [
     BrowserModule,

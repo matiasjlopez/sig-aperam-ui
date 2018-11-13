@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrdenDeTrabajo} from '../../models/orden-de-trabajo.model';
 import {OtService} from '../../services/ot/ot.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ot-create',
@@ -12,7 +13,7 @@ import {OtService} from '../../services/ot/ot.service';
 export class OtCreateComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private otService: OtService) { }
+  constructor(private formBuilder: FormBuilder, private otService: OtService, private router: Router) { }
 
   ngOnInit() {
     this.form = this.createForm();
@@ -32,6 +33,9 @@ export class OtCreateComponent implements OnInit {
   }
 
   add() {
-    this.otService.addOt(new OrdenDeTrabajo(this.form.getRawValue())).then(_ => console.log('Ok'));
+    this.otService.addOt(new OrdenDeTrabajo(this.form.getRawValue())).then(_ => {
+      this.form.reset();
+      this.router.navigate(['ot', 'calidad']);
+    });
   }
 }

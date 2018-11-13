@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 import {OrdenDeCompra} from '../../models/orden-de-compra.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OcService {
+export class BobinaService {
 
   private baseUrl = environment.baseUrl;
 
@@ -16,8 +16,8 @@ export class OcService {
     return this.http.get(this.baseUrl + '/api/orden/compra').toPromise();
   }
 
-  public addOc(ordenDeCompra: OrdenDeCompra): Promise<any> {
-     return this.http.post(this.baseUrl + '/api/orden/compra', ordenDeCompra).toPromise();
+  public addBobina(bobina: any): Promise<any> {
+    return this.http.post(this.baseUrl + '/api/bobina', bobina).toPromise();
   }
 
   getBobinasByOC(id): Promise<any> {
