@@ -24,6 +24,10 @@ export class OtService {
     return this.http.get(this.baseUrl + '/api/orden/trabajo/PENDIENTE').toPromise();
   }
 
+  getOTsTerminada(): Promise<any> {
+    return this.http.get(this.baseUrl + '/api/orden/trabajo/TERMINADA').toPromise();
+  }
+
   getOTsChapa(): Promise<any> {
     return this.http.get(this.baseUrl + '/api/orden/trabajo/producto/CHAPA').toPromise();
   }

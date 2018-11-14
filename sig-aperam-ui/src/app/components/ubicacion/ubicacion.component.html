@@ -1,0 +1,91 @@
+<div class="col-12 margin-top" [formGroup]="form" *ngIf="form">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select placeholder="Producto" [(value)]="selectedProducto" (selectionChange)="onProductoSelected($event.value)">
+              <mat-option *ngFor="let producto of productos" [value]="producto">
+                {{producto.etiquetaDespacho + ' - ' + producto.producto}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6" *ngIf="selectedProducto">
+          <mat-card>
+            <mat-card-title>Producto - {{selectedProducto.id}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Producto" [value]="selectedProducto.producto" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Cantidad" [value]="selectedProducto.cantidad" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Evolucion" [value]="selectedProducto.evolucion" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Etiqueta Despacho" [value]="selectedProducto.etiquetaDespacho" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Estado" [(ngModel)]="estadoProductivo" [ngModelOptions]="{standalone: true}">
+                  <mat-option [value]="'CORROBORADA_DESPACHO'">CORROBORADO_DESPACHO</mat-option>
+                  <mat-option [value]="'CORROBORADA_DESPACHO_PRONOSTICADO'">CORROBORADO_DESPACHO_PRONOSTICADO</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <mat-form-field class="w-100">
+                  <textarea matInput placeholder="Comentario" [(ngModel)]="selectedProducto.comentario" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="w-100 text-center">
+                <button mat-raised-button (click)="saveProducto()" color="primary">GUARDAR</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-6" *ngIf="selectedProducto">
+          <mat-card>
+            <mat-card-title>Orden de trabajo - {{selectedProducto.ordenDeTrabajo.id}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie solicitada" [value]="selectedProducto.ordenDeTrabajo.serieSolicitada" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho solicitado" [value]="selectedProducto.ordenDeTrabajo.anchoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor solicitado" [value]="selectedProducto.ordenDeTrabajo.espesorSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Largo solicitado" [value]="selectedProducto.ordenDeTrabajo.largoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Esmerilado" [value]="selectedProducto.ordenDeTrabajo.esmerilado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Cantidad" [value]="selectedProducto.ordenDeTrabajo.cantidad" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Producto" [value]="selectedProducto.ordenDeTrabajo.producto" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Fecha de despacho" formControlName="fechaDespacho">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

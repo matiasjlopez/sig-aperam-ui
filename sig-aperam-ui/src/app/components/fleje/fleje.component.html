@@ -1,3 +1,115 @@
-<p>
-  fleje works!
-</p>
+<div class="col-12 margin-top" [formGroup]="form" *ngIf="form">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select placeholder="Orden de trabajo" [(value)]="selectedOrden" (selectionChange)="onOrdenSelected($event.value)">
+              <mat-option *ngFor="let orden of ordenes" [value]="orden">
+                {{orden.id + ' - ' + orden.serieSolicitada}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6" *ngIf="selectedOrden">
+          <mat-card>
+            <mat-card-title>Orden de trabajo - {{selectedOrden.id}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie solicitada" [value]="selectedOrden.serieSolicitada" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho solicitado" [value]="selectedOrden.anchoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor solicitado" [value]="selectedOrden.espesorSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Largo solicitado" [value]="selectedOrden.largoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Esmerilado" [value]="selectedOrden.esmerilado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Cantidad" [value]="selectedOrden.cantidad" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Producto" [value]="selectedOrden.producto" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Fecha de despacho" formControlName="fechaDespacho">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-6" *ngIf="selectedOrden">
+          <mat-card>
+            <mat-card-title>Bobina - {{selectedOrden.bobina.codigo}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie" [value]="selectedOrden.bobina.serie" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho" [value]="selectedOrden.bobina.ancho" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor" [value]="selectedOrden.bobina.espesor" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Peso" [value]="selectedOrden.bobina.pesoTotal" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Largo" [value]="selectedOrden.bobina.largo" disabled>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 30px" *ngIf="selectedOrden">
+        <div class="col-12">
+          <mat-card>
+            <mat-card-content>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <mat-form-field class="w-50">
+                    <input matInput type="number" placeholder="Cantidad de flejes" formControlName="cantidad">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 15px">
+                <div class="col-12 text-center">
+                  <h5>Sobrante de la bobina</h5>
+                  <mat-form-field style="margin-top: 10px">
+                    <input matInput placeholder="Ancho" type="number" formControlName="ancho">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Espesor" type="number" formControlName="espesor">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Peso" type="number" formControlName="peso">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Largo" type="number" formControlName="largo">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-100 text-center">
+                <button mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" (click)="guardar()">GUARDAR</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

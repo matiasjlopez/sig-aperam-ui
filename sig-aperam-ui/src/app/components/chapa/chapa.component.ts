@@ -39,7 +39,8 @@ export class ChapaComponent implements OnInit {
       cantidad: ['', Validators.required],
       ancho: [''],
       espesor: [''],
-      peso: ['']
+      peso: [''],
+      largo: ['']
     });
   }
 
@@ -52,10 +53,16 @@ export class ChapaComponent implements OnInit {
     });
   }
 
+  onOrdenSelected(orden: OrdenDeTrabajo) {
+    this.form.controls['fecha'].setValue(new Date(orden.fecha));
+    this.form.controls['fechaDespacho'].setValue(new Date(orden.fechaDespacho));
+  }
+
   guardar() {
     if(this.form.controls['espesor'].value !== '') this.selectedOrden.bobina.espesor = this.form.controls['espesor'].value;
     if(this.form.controls['ancho'].value !== '') this.selectedOrden.bobina.ancho = this.form.controls['ancho'].value;
-    if(this.form.controls['peso'].value !== '') this.selectedOrden.bobina.ancho = this.form.controls['peso'].value;
+    if(this.form.controls['peso'].value !== '') this.selectedOrden.bobina.peso = this.form.controls['peso'].value;
+    if(this.form.controls['largo'].value !== '') this.selectedOrden.bobina.largo = this.form.controls['largo'].value;
     this.selectedOrden.bobina.estadoProductivo = this.estadoBobina;
     this.selectedOrden.estado = 'TERMINADA';
     this.producto.cantidad = this.form.controls['cantidad'].value;

@@ -20,6 +20,9 @@ import { MecesaComponent } from './components/mecesa/mecesa.component';
 import { BlancComponent } from './components/blanc/blanc.component';
 import { FlejadoraGrandeComponent } from './components/flejadora-grande/flejadora-grande.component';
 import { FlejadoraChicaComponent } from './components/flejadora-chica/flejadora-chica.component';
+import { CorroboracionComponent } from './components/corroboracion/corroboracion.component';
+import { DisposicionComponent } from './components/disposicion/disposicion.component';
+import { UbicacionComponent } from './components/ubicacion/ubicacion.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { FlejadoraChicaComponent } from './components/flejadora-chica/flejadora-
     MecesaComponent,
     BlancComponent,
     FlejadoraGrandeComponent,
-    FlejadoraChicaComponent
+    FlejadoraChicaComponent,
+    CorroboracionComponent,
+    DisposicionComponent,
+    UbicacionComponent
   ],
   imports: [
     BrowserModule,

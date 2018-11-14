@@ -51,59 +51,32 @@
             </mat-card-content>
           </mat-card>
         </div>
-        <div class="col-6" *ngIf="selectedOrden">
+        <div class="col-6" *ngIf="producto">
           <mat-card>
-            <mat-card-title>Bobina - {{selectedOrden.bobina.codigo}}</mat-card-title>
+            <mat-card-title>Producto - {{producto.id}}</mat-card-title>
             <mat-card-content>
               <mat-form-field>
-                <input matInput placeholder="Serie" [value]="selectedOrden.bobina.serie" disabled>
+              <input matInput placeholder="Producto" [value]="producto.producto" disabled>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Ancho" [value]="selectedOrden.bobina.ancho" disabled>
+                <input matInput placeholder="Cantidad" [value]="producto.cantidad" disabled>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Espesor" [value]="selectedOrden.bobina.espesor" disabled>
+                <input matInput placeholder="Evolucion" [value]="producto.evolucion" disabled>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Peso" [value]="selectedOrden.bobina.pesoTotal" disabled>
+                <mat-select placeholder="Estado" [(ngModel)]="estadoProductivo" [ngModelOptions]="{standalone: true}">
+                  <mat-option [value]="'CORROBORADA'">CORROBORADO</mat-option>
+                  <mat-option [value]="'RECHAZADA'">RECHAZADO</mat-option>
+                </mat-select>
               </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Largo" [value]="selectedOrden.bobina.largo" disabled>
-              </mat-form-field>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 30px" *ngIf="selectedOrden">
-        <div class="col-12">
-          <mat-card>
-            <mat-card-content>
-              <div class="row">
-                <div class="col-12 text-center">
-                  <mat-form-field class="w-50">
-                    <input matInput type="number" placeholder="Cantidad de chapas" formControlName="cantidad">
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 15px">
-                <div class="col-12 text-center">
-                  <h5>Sobrante de la bobina</h5>
-                  <mat-form-field style="margin-top: 10px">
-                    <input matInput placeholder="Ancho" type="number" formControlName="ancho">
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="Espesor" type="number" formControlName="espesor">
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="Peso" type="number" formControlName="peso">
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="Largo" type="number" formControlName="largo">
-                  </mat-form-field>
-                </div>
+              <div>
+                <mat-form-field class="w-100">
+                  <textarea matInput placeholder="Comentario" [(ngModel)]="producto.comentario" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
               </div>
               <div class="w-100 text-center">
-                <button mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" (click)="guardar()">GUARDAR</button>
+                <button mat-raised-button (click)="saveProducto()" color="primary">GUARDAR</button>
               </div>
             </mat-card-content>
           </mat-card>

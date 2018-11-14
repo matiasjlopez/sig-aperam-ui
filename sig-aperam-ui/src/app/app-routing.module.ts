@@ -10,31 +10,34 @@ import {MecesaComponent} from "./components/mecesa/mecesa.component";
 import {BlancComponent} from "./components/blanc/blanc.component";
 import {FlejadoraGrandeComponent} from "./components/flejadora-grande/flejadora-grande.component";
 import {FlejadoraChicaComponent} from "./components/flejadora-chica/flejadora-chica.component";
+import {DisposicionComponent} from "./components/disposicion/disposicion.component";
+import {CorroboracionComponent} from "./components/corroboracion/corroboracion.component";
+import {UbicacionComponent} from "./components/ubicacion/ubicacion.component";
 
 const routes: Routes = [
   { path: 'oc',
-    children: [{
-      path: 'calidad', component: OCQAComponent
-    }, {
-      path: 'create', component: OcCreateComponent
-    }]
+    children: [
+      { path: 'crear', component: OcCreateComponent},
+      { path: 'calidad', component: OCQAComponent }
+    ]
   },
   { path: 'ot',
-    children: [{
-      path: 'calidad', component: OTQAComponent
-    }, {
-      path: 'create', component: OtCreateComponent
-    }]
+    children: [
+      { path: 'crear', component: OtCreateComponent},
+      { path: 'calidad', component: OTQAComponent },
+      { path: 'corroboracion', component: CorroboracionComponent},
+      { path: 'disposicion', component: DisposicionComponent},
+      { path: 'ubicacion', component: UbicacionComponent}
+    ]
   },
-  { path: 'bobina/create', component: BobinaCreateComponent},
+  { path: 'bobina/crear', component: BobinaCreateComponent},
   { path: 'mecesa', component: MecesaComponent},
   { path: 'blanc', component: BlancComponent},
   { path: 'flejadora',
-    children: [{
-      path: 'grande', component: FlejadoraGrandeComponent
-    }, {
-      path: 'chica', component: FlejadoraChicaComponent
-    }]
+    children: [
+      { path: 'grande', component: FlejadoraGrandeComponent },
+      { path: 'chica', component: FlejadoraChicaComponent }
+    ]
   }
 ];
 

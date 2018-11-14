@@ -46,6 +46,9 @@
                 <input matInput placeholder="Cantidad" [value]="selectedOrden.cantidad" disabled>
               </mat-form-field>
               <mat-form-field>
+                <input matInput placeholder="Producto" [value]="selectedOrden.producto" disabled>
+              </mat-form-field>
+              <mat-form-field>
                 <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -75,6 +78,9 @@
                 <input matInput placeholder="Peso" [value]="selectedBobina.pesoTotal" disabled>
               </mat-form-field>
               <mat-form-field>
+                <input matInput placeholder="Largo" [value]="selectedBobina.largo" disabled>
+              </mat-form-field>
+              <mat-form-field>
                 <mat-select placeholder="Estado" [(ngModel)]="estadoProductivo" [ngModelOptions]="{standalone: true}">
                   <mat-option [value]="'SCRAP'">SCRAP</mat-option>
                   <mat-option [value]="'RETRABAJO'">RETRABAJO</mat-option>
@@ -95,4 +101,9 @@
       </div>
     </mat-card-content>
   </mat-card>
+  <div id="button-routers" class="text-center" style="margin-top: 40px">
+    <button mat-raised-button color="basic" routerLink="/oc/calidad">A control calidad ordenes de compra</button>
+    <button mat-raised-button color="basic" routerLink="/mecesa">A chapas</button>
+    <button mat-raised-button color="basic" routerLink="/flejadora/grande">A flejes</button>
+  </div>
 </div>
