@@ -23,4 +23,12 @@ export class BobinaService {
   getBobinasByOC(id): Promise<any> {
     return this.http.get(this.baseUrl + '/api/bobina/compra/' + encodeURIComponent(id)).toPromise();
   }
+
+  getCorrectBobinas(): Promise<any> {
+    return this.http.get(this.baseUrl + '/api/bobina/correct').toPromise();
+  }
+
+  save(bobina): Promise<any> {
+    return this.http.put(this.baseUrl + '/api/bobina', bobina).toPromise();
+  }
 }

@@ -28,6 +28,7 @@ export class OtCreateComponent implements OnInit {
       esmerilado: [''],
       cantidad: ['', Validators.required],
       fechaDespacho: [''],
+      estado: ['PENDIENTE'],
       producto: ['', Validators.required]
     });
   }

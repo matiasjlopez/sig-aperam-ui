@@ -1,0 +1,98 @@
+<div class="col-12 margin-top" [formGroup]="form" *ngIf="form">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select placeholder="Orden de trabajo" [(value)]="selectedOrden" (selectionChange)="onOrdenSelected($event.value)">
+              <mat-option *ngFor="let orden of ordenes" [value]="orden">
+                {{orden.id + ' - ' + orden.serieSolicitada}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select placeholder="Bobina" [(value)]="selectedBobina" (selectionChange)="onBobinaSelected($event.value)">
+              <mat-option *ngFor="let bobina of bobinas" [value]="bobina">
+                {{bobina.codigo + ' - ' + bobina.serie}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6" *ngIf="!selectedOrden">&nbsp;</div>
+        <div class="col-6" *ngIf="selectedOrden">
+          <mat-card>
+            <mat-card-title>Orden de trabajo - {{selectedOrden.id}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie solicitada" [value]="selectedOrden.serieSolicitada" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho solicitado" [value]="selectedOrden.anchoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor solicitado" [value]="selectedOrden.espesorSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Largo solicitado" [value]="selectedOrden.largoSolicitado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Esmerilado" [value]="selectedOrden.esmerilado" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Cantidad" [value]="selectedOrden.cantidad" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Fecha de despacho" formControlName="fechaDespacho">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-6" *ngIf="selectedBobina">
+          <mat-card>
+            <mat-card-title>Bobina - {{selectedBobina.codigo}}</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Serie" [value]="selectedBobina.serie" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ancho" [value]="selectedBobina.ancho" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Espesor" [value]="selectedBobina.espesor" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Peso" [value]="selectedBobina.pesoTotal" disabled>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Estado" [(ngModel)]="estadoProductivo" [ngModelOptions]="{standalone: true}">
+                  <mat-option [value]="'SCRAP'">SCRAP</mat-option>
+                  <mat-option [value]="'RETRABAJO'">RETRABAJO</mat-option>
+                  <mat-option [value]="'PENDIENTE_PRODUCCION'">PENDIENTE_PRODUCCION</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <mat-form-field class="w-100">
+                  <textarea matInput placeholder="Comentario" [(value)]="selectedBobina.comentario"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="w-100 text-center">
+                <button mat-raised-button (click)="saveBobina(true)" color="primary">GUARDAR</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

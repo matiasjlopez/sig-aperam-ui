@@ -14,7 +14,7 @@
         <div class="col-6" *ngIf="selectedOrden && bobinas">
           <mat-form-field>
             <mat-select placeholder="Bobina" [(value)]="selectedBobina">
-              <mat-option *ngFor="let bobina of bobinas" [value]="bobina">
+              <mat-option *ngFor="let bobina of bobinas" [value]="bobina" [ngClass]="{'incorrect': !bobina.aptitudInicial, 'correct': bobina.aptitudInicial}">
                 {{bobina.codigo + ' - ' + bobina.serie}}
               </mat-option>
             </mat-select>
@@ -55,8 +55,21 @@
                 <input matInput placeholder="Espesor" [value]="selectedBobina.espesor" disabled>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Peso" [value]="selectedBobina.peso" disabled>
+                <input matInput placeholder="Peso" [value]="selectedBobina.pesoTotal" disabled>
               </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Largo" [value]="selectedBobina.largo" disabled>
+              </mat-form-field>
+              <mat-checkbox [ngModel]="selectedBobina.aptitudInicial" disabled>OK</mat-checkbox>
+              <div>
+                <mat-form-field class="w-100">
+                  <textarea matInput placeholder="Comentario" [(ngModel)]="selectedBobina.comentario"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="w-100 text-center">
+                <button mat-raised-button (click)="saveBobina(true)" color="primary">CORRECTO</button>
+                <button mat-raised-button (click)="saveBobina(false)" color="warn">INCORRECTO</button>
+              </div>
             </mat-card-content>
           </mat-card>
         </div>

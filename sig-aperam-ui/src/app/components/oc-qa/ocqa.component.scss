@@ -1,0 +1,17 @@
+button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+mat-form-field, mat-checkbox {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+mat-option.incorrect {
+  background: rgba(255, 0, 0, 0.67);
+}
+
+mat-option.correct {
+  background: rgba(0, 128, 0, 0.67);
+}
